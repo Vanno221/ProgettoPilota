@@ -1,12 +1,13 @@
 #include "mergepackage.h"
 #include "mergesort.h"
 #include <iostream>
+#include "mainwindow.h"
 
 using namespace std;
 
 MergePackage::MergePackage()
 {
-    QThread *worker;
+   // QThread *thread;
     MergeSort *merge = new MergeSort();
 }
 
@@ -18,8 +19,9 @@ int AbsAlgorithm::getDifficulty(){
     return m_difficulty;
 }
 
-void MergePackage::chooseDifficulty(int m_difficulty){
-    int *array{};
+int *array{};
+void MergePackage::chooseDifficulty(int m_difficulty, int *array){
+
     switch (m_difficulty) {
     case 1: //easy
         for(int i=0; i<100;i++)
@@ -37,10 +39,11 @@ void MergePackage::chooseDifficulty(int m_difficulty){
 }
 
 MergeSort MergePackage::getAlgorithm(){
-    merge = this->merge;
+    this->merge = merge;
 }
 
 void MergePackage::startSorting(){
-    moveToThread(worker);
-
+    merge->moveToThread(AbsPackage::thread);
+   //connect(AbsPackage::thread, SIGNAL(thread->start()), merge, SLOT(MainWindow::on_pushButton_clicked()));
+    connect(AbsPackage::thread, SIGNAL(MergePackage::startSorting()), merge, SLOT(merge->runSorting(this->array)));
 }

@@ -20,9 +20,11 @@ public:
 
     void merge(int *arr, int l, int m, int r);
 
-    void runSorting(int *arr, int n);
-
     virtual ~MergeSort() = default;
+
+public slots:
+    void runSorting(int *arr) override;
+
 };
 
 #endif // MERGESORT_H
