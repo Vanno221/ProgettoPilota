@@ -44,6 +44,6 @@ MergeSort MergePackage::getAlgorithm(){
 
 void MergePackage::startSorting(){
     merge->moveToThread(AbsPackage::thread);
-   //connect(AbsPackage::thread, SIGNAL(thread->start()), merge, SLOT(MainWindow::on_pushButton_clicked()));
+  
     connect(AbsPackage::thread, SIGNAL(MergePackage::startSorting()), merge, SLOT(merge->runSorting(this->array)));
 }

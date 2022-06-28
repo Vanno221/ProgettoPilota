@@ -5,16 +5,21 @@
 
 class MergePackage : public AbsPackage
 {
+
 private:
     int m_difficulty;
-    QThread *worker;
+    int* array;
+    //QThread *thread;
     MergeSort *merge;
 
 public:
     MergePackage();
-    void chooseDifficulty(int m_difficulty);
+    void chooseDifficulty(int m_difficulty, int* array) override;
+    MergeSort getAlgorithm();
+
+signals:
     void startSorting() override;
-    void getAlgorithm();
+
 };
 
 #endif // MERGEPACKAGE_H

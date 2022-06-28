@@ -1,6 +1,7 @@
 #ifndef ABSPACKAGE_H
 #define ABSPACKAGE_H
 #include "absalgorithm.h"
+#include <QThread>
 
 class AbsPackage : public QObject {
     Q_OBJECT
@@ -9,8 +10,9 @@ private:
 
 public:
     AbsPackage() = default;
-    virtual void chooseDifficulty() = 0;
+    virtual void chooseDifficulty(int m_difficulty, int* array) = 0;
     virtual void startSorting() = 0;
+    QThread* thread = new QThread();
 
 };
 

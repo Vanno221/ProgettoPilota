@@ -78,7 +78,8 @@ void MergeSort::merge(int *arr, int l, int m, int r){
         cout <<"\n";
     }
 
-void MergeSort::runSorting(int *arr, int n){
+void MergeSort::runSorting(int *arr){
+       int n = sizeof (arr);
        int curr_size;  // For current size of subarrays to be merged
                        // curr_size varies from 1 to n/2
        int left_start; // For picking starting index of left subarray

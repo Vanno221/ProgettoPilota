@@ -11,11 +11,11 @@ private:
 public:
     BubbleSort();
 
-    int getDifficulty();
+    int getDifficulty() override;
 
-    void setDifficulty(int m_difficulty);
+    void setDifficulty(int m_difficulty) override;
 
-    void runSorting(int arr[]);
+    void runSorting(int *arr) override;
 
     virtual ~BubbleSort() = default;
 };

@@ -18,7 +18,7 @@ public:
 
     virtual void setDifficulty(int m_difficulty) = 0;
 
-    virtual void runSorting() = 0;
+    virtual void runSorting(int *arr) = 0;
 
     virtual ~AbsAlgorithm() = default;
 
