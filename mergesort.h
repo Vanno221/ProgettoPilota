@@ -18,9 +18,9 @@ public:
 
     int min(int a, int b);
 
-    void merge(int *arr, int l, int m, int r);
+    void merge(int arr[], int l, int m, int r);
 
-    void runSorting(int *arr, int n);
+    void runSorting(int arr[]) override;
 
     virtual ~MergeSort() = default;
 };

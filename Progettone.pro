@@ -17,17 +17,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     bubblesort.cpp \
+    concretepackage.cpp \
     main.cpp \
     mainwindow.cpp \
-    mergepackage.cpp \
     mergesort.cpp
 
 HEADERS += \
     absalgorithm.h \
     abspackage.h \
     bubblesort.h \
+    concretepackage.h \
     mainwindow.h \
-    mergepackage.h \
     mergesort.h
 
 FORMS += \

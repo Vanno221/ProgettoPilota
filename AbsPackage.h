@@ -9,7 +9,11 @@ private:
 
 public:
     AbsPackage() = default;
-    virtual void chooseDifficulty() = 0;
+    QList<QThread*> *workers;
+    virtual void chooseDifficulty(int m_difficulty) = 0;
+    virtual AbsAlgorithm setAlgorithm() = 0;
+
+signals:
     virtual void startSorting() = 0;
 
 };

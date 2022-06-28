@@ -7,11 +7,11 @@ MergeSort::MergeSort()
 {
 }
 
-void MergeSort::setDifficulty(int m_difficulty) {
+void AbsAlgorithm::setDifficulty(int m_difficulty) {
     this->m_difficulty = m_difficulty;
 }
 
-int MergeSort::getDifficulty(){
+int AbsAlgorithm::getDifficulty(){
     return m_difficulty;
 }
 
@@ -19,21 +19,18 @@ int MergeSort::min(int a, int b) {
     return (a<b)? a :b;
 }
 
-void MergeSort::merge(int *arr, int l, int m, int r){
-        int i, j, k;
+void MergeSort::merge(int arr[], int l, int m, int r){
+        int i,j,k;
         int n1 = m - l + 1;
         int n2 =  r - m;
+        int L[n1];
+        int R[n2];
 
-        /* create temp arrays */
-        int L[n1], R[n2];
-
-        /* Copy data to temp arrays L[] and R[] */
         for (i = 0; i < n1; i++)
             L[i] = arr[l + i];
         for (j = 0; j < n2; j++)
             R[j] = arr[m + 1+ j];
 
-        /* Merge the temp arrays back into arr[l..r]*/
         i = 0;
         j = 0;
         k = l;
@@ -51,8 +48,7 @@ void MergeSort::merge(int *arr, int l, int m, int r){
             }
             k++;
         }
-
-        /* Copy the remaining elements of L[], if there are any */
+        //controllo sull'array sx L
         while (i < n1)
         {
             arr[k] = L[i];
@@ -60,7 +56,7 @@ void MergeSort::merge(int *arr, int l, int m, int r){
             k++;
         }
 
-        /* Copy the remaining elements of R[], if there are any */
+        //controllo sull'array dx R
         while (j < n2)
         {
             arr[k] = R[j];
@@ -69,36 +65,30 @@ void MergeSort::merge(int *arr, int l, int m, int r){
         }
     }
 
-    /* Function to print an array */
-    void printArray(int A[], int size)
-    {
-        int i;
-        for (i=0; i < size; i++)
-            cout <<" "<< A[i];
-        cout <<"\n";
-    }
+void printArray(int A[], int size)
+{
+    int i;
+    for (i=0; i < size; i++)
+        cout <<" "<< A[i];
+    cout <<"\n";
+}
 
-void MergeSort::runSorting(int *arr, int n){
-       int curr_size;  // For current size of subarrays to be merged
-                       // curr_size varies from 1 to n/2
-       int left_start; // For picking starting index of left subarray
-                       // to be merged
+void MergeSort::runSorting(int arr[]){
+       int n = sizeof (*arr);
+       int curr_size;  // può andare da 1 a n/2 per ordinare i sottoarray
+       int left_start; // si inizia dall'array di sx
 
-       // Merge subarrays in bottom up manner.  First merge subarrays of
-       // size 1 to create sorted subarrays of size 2, then merge subarrays
-       // of size 2 to create sorted subarrays of size 4, and so on.
+       // Fa la merge con sottoarray ordinati
        for (curr_size=1; curr_size<=n-1; curr_size = 2*curr_size)
        {
-           // Pick starting point of different subarrays of current size
            for (left_start=0; left_start<n-1; left_start += 2*curr_size)
            {
-               // Find ending point of left subarray. mid+1 is starting
-               // point of right
+               //Inizia con quello di dx
                int mid = min(left_start + curr_size - 1, n-1);
 
                int right_end = min(left_start + 2*curr_size - 1, n-1);
 
-               // Merge Subarrays arr[left_start...mid] & arr[mid+1...right_end]
+               // fa la merge
                merge(arr, left_start, mid, right_end);
            }
        }
